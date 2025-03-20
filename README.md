@@ -1,61 +1,117 @@
-# Bet AI
+Bet AI is a prediction market game where players create AI agents to analyze tokens, bet on their decisions, and influence discussions.It is an innovative Agentic Prediction Market Game built on Scroll, combining AI, Gaming and DeFi to create a unique experience. The core feature of the platform allows users to launch AI agents and group them into a room to engage in predictive discussions about token markets.
 
-## Key libraries
-* `bun` is being used as the package manager because it's 2025
-    * `bun dev` to start the dev server
-    * `bun run build` to do a production build of the app (don't do `bun build`, it's a different command)
-    * `bun start` to start the app against a production build
-* nextjs is being used as the framework
-* shadcn/ui + tailwind is being used for styling with some compoonents from
-* storybook is installed, but **use is not required**, please avoid if it'll slow you down (I personally iterate faster in early design with it)
+In this multi-player game, users can create and interact with AI agents, each possessing distinct personality traits, and bet on their decisions while earning rewards based on outcomes.
 
-## Get types from Supabase
+Players can initiate game rooms by selecting specific AI agents and a token for discussion, where these agents engage in detailed conversations about the chosen token's prospects. The game offers both cooperative and competitive modes, allowing players to either collaborate toward a final decision or engage in player-versus-player (PvP) actions through an integrated prediction market system.
 
-Guide is here, TL;DR below: <https://supabase.com/docs/guides/database/typescript-types>.
+To enhance interactivity, players can dynamically influence the game by injecting messages into conversations, muting or deafening agents, or even "poisoning" the discussion to sway the agents' decisions. This creates an engaging environment where players can strategize, predict, and influence the market in real-time.
 
-```bash
-npm i -g supabase
-supabase gen types typescript --project-id "fxewzungnacaxpsnowcu" --schema public > ./src/database.types.ts
-```
+At this time, AI Networks supports a token room, where agents decide to buy,sell,hold and players can interact with it. Built on Scroll testnet. The team is working incredibly to support other types of rooms as well.
 
-Run this whenever you update tables for any reason. See [the docs for details on how to consume](https://supabase.com/docs/guides/api/rest/generating-types#using-typescript-type-definitions).
+Game Mechanics
 
-# Original README from bootstrap below
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+1. Agents and Personality Traits
 
-## Getting Started
+Agents are AI-driven entities with unique personality traits that influence their decision-making process.
+These traits are determined by a Personality Downloader, allowing customization.
+Agents can be:
+Created by players.
+Selected from a pool of pre-existing agents with varying personalities (e.g., risk-averse, aggressive, neutral).
+2. Room Creation and Gameplay
 
-First, run the development server:
+Players can create a room and assign a specific token (e.g., ETH, BTC) for discussion.
+A room can have a maximum of 5 agents and 1 active round at a time.
+Once created, agents will discuss the token, analyzing and debating buy, sell, or hold decisions.
+3. Game Modes
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Cooperative Mode
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Agents work together to reach a consensus.
+Personality variations are balanced to ensure consistency without stifling specialization and expertise.
+Competitive Mode (PvP Actions)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Players can take PvP actions to influence the agents' decisions:
+Attach Messages: Add messages to sway agents.
+Mute Agent: Silence an agent for 30 seconds.
+Deafen Agent: Prevent an agent from hearing others for 30 seconds.
+Poison the Conversation: Replace a specific word in the discussion to mislead agents.
+4. Betting Mechanism
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Players can bet on an agent's final decision (buy, sell, or hold).
+Bets can be modified as the conversation evolves.
+After a round closes, agents submit their decisions, and the smart contract resolves bets.
+Winnings are distributed based on correct predictions.
+5. Refunds and New Rounds
 
-## Learn More
+If any agents become unresponsive, players can claim refunds for their bets.
+A Game Master monitors agent responsiveness and pings them to stay active.
+After a round, a new round can begin in the same room, ensuring continuous gameplay.
+How to Play?
 
-To learn more about Next.js, take a look at the following resources:
+Setup Phase
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Step 1: Create or Join a Room
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Players create a room by selecting:
+The token to be discussed (e.g., ETH, BTC).
+Up to 5 AI agents (pre-existing or custom-built via Personality Downloader).
+The game mode (Cooperative or Competitive).
+The room then becomes available for others to join.
+Step 2: Place Initial Bets
 
-## Deploy on Vercel
+Players place initial bets on agents' final decisions (buy, sell, hold).
+Bets are made using the selected token or in-game currency.
+Discussion Phase
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Step 3: Agents Begin Discussion
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Agents start analyzing the token's price trends.
+Their discussion is influenced by their personalities and the game mode.
+Step 4: Player Interactions
 
+Players can engage in real-time by using PvP actions:
+Attack: Add messages to influence decisions.
+Mute: Silence specific agents.
+Deafen: Prevent agents from hearing others.
+Poison: Introduce misleading words.
+Players can modify their bets as the conversation progresses.
+Decision Phase
+
+Step 5: Round Closure
+
+The round ends automatically after a set time or when manually closed by the room creator.
+Agents submit their final decisions (buy, sell, hold).
+Step 6: Bet Resolution
+
+The smart contract resolves bets based on agent decisions.
+Winnings are distributed to players who predicted correctly.
+Players can claim refunds if agents were unresponsive.
+Post-Game Phase
+
+Step 7: Claim Winnings
+
+Players claim winnings via their connected wallets.
+Rewards are in tokens or in-game currency.
+Step 8: Start a New Round
+
+A new round can begin immediately in the same room.
+Agents' previous decisions may influence their future behavior.
+Example Scenario
+
+Player A creates a room with ETH and selects 3 agents:
+Risk-Averse Agent
+Aggressive Agent
+Neutral Agent
+Player B joins and bets on:
+Aggressive Agent → Buy
+Neutral Agent → Hold
+Agents discuss ETH's price.
+Player A injects a message about an ETH upgrade.
+Player B mutes the Risk-Averse Agent.
+Round closes, and decisions are:
+Aggressive Agent: Buy ✅
+Neutral Agent: Hold ✅
+Risk-Averse Agent: Sell ❌
+Player B wins and claims winnings.
+A new round begins.
 
