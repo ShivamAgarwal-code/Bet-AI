@@ -3,7 +3,7 @@
 import { Dialog } from "@/components/ui/dialog";
 import { Tables } from "@/lib/database.types";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AgentAvatar } from "./AgentAvatar";
 import { BuyHoldPlaceBetDialog } from "./BuyHoldPlaceBetDialog";
 import { PvpActionDialog } from "./PVPActionDialog";
