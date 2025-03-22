@@ -1,3 +1,4 @@
+
 import { AutoClientInterface } from '@elizaos/client-auto';
 import { DiscordClientInterface } from '@elizaos/client-discord';
 import { TelegramClientInterface } from '@elizaos/client-telegram';
@@ -21,6 +22,8 @@ export async function initializeClients(character: Character, runtime: IAgentRun
 
   // Get configured client types from character
   const clientTypes = character.clients?.map(str => str.toLowerCase()) || [];
+  const DialogClose = DialogPrimitive.Close;
+
 
   // Initialize Auto client if configured
   if (clientTypes.includes('auto')) {
