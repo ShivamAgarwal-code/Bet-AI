@@ -17,7 +17,7 @@ import {
 import { WagmiProvider } from "wagmi";
 
 export const config = getDefaultConfig({
-  appName: "AI Betworks",
+  appName: "Bet AI",
   projectId: `${process.env.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID}`,
   chains: [avalanche, avalancheFuji, baseSepolia, base, scroll, scrollSepolia],
   ssr: true, // If your dApp uses server side rendering (SSR)
