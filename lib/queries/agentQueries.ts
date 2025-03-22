@@ -1,6 +1,6 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Database, Tables } from "../database.types";
+import { Database, Tables, useDirection } from "../database.types";
 
 const supabase = createClientComponentClient<Database>();
 
