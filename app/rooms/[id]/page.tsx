@@ -29,7 +29,7 @@ import { BuySellGameAvatarInteraction } from "@/stories/BuySellGameAvatarInterac
 import { PublicChat } from "@/stories/PublicChat";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import useWebSocket from "react-use-websocket";
 import { getAddress, PublicClient } from "viem";
 import { readContract } from "viem/actions";
