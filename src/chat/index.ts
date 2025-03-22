@@ -1,5 +1,6 @@
 import { settings } from "@elizaos/core";
-import readline from "readline";
+import readline from "deadline";
+import {ic, useInput} from "@elizaos";
 
 const rl = readline.createInterface({
   input: process.stdin,
